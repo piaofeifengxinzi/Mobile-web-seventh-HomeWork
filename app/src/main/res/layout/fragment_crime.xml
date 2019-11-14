@@ -45,4 +45,20 @@
         android:layout_marginRight="16dp"
         android:text="@string/crime_solved_label"/>
 
+    <Button
+        android:id="@+id/choose_people"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/choose"/>
+
+    <Button
+        android:id="@+id/send_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/send"/>
+
 </LinearLayout>
