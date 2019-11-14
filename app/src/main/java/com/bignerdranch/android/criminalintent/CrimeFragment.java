@@ -8,6 +8,9 @@ import androidx.fragment.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -48,6 +51,7 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
     }
@@ -74,6 +78,8 @@ public class CrimeFragment extends Fragment {
 
             }
         });
+
+
 
         mDateButton = (Button) v.findViewById(R.id.crime_date);
         mTimeButton = (Button) v.findViewById(R.id.crime_time);
@@ -110,6 +116,23 @@ public class CrimeFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu , MenuInflater inflater){
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.delete, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menu){
+        switch (menu.getItemId()){
+            case R.id.delete:
+                CrimeLab.get(getActivity()).daleteCrime(mCrime);
+                return true;
+                default:
+                    return super.onOptionsItemSelected(menu);
+        }
     }
 
     @Override
